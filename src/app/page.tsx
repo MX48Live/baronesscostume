@@ -1,4 +1,4 @@
-export const runtime = "edge";
+export const runtime = "nodejs_compat";
 
 async function serverData() {
   return { data: "Hello world" };
