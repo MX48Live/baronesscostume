@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "include": [
+    "/people/*"
+  ],
+  "exclude": [
+    "/build/*",
+    "/assets/*",
+    "/",
+    "/test/*",
+  ]
+}
