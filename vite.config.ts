@@ -15,6 +15,7 @@ export default defineConfig(() => {
     plugins: [qwikCity(), qwikVite(), tsconfigPaths(),
     cloudflarePagesAdapter({
       ssg: {
+        include: ['/'],
         exclude: ['/people/*'],
       },
       }),
