@@ -4,7 +4,10 @@ import { ListObjectsV2Command } from "@aws-sdk/client-s3";
 
 export default async function Home() {
   // const data = await R2.send(
-  //   new ListObjectsV2Command({ Bucket: "baronesscostume" })
+  //   new ListObjectsV2Command({
+  //     Bucket: "baronesscostume",
+  //     Prefix: "images_dir1_",
+  //   })
   // );
 
   return (
