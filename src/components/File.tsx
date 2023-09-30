@@ -12,11 +12,12 @@ import {
 import { R2 } from "@/lib/r2";
 
 async function Initializing(fullSizeRenamed: File[], BUCKET: string) {
-  const thumbnailResized = await handleResizeFile(fullSizeRenamed, "thumbnail");
+  const fullSizeResized = await handleResizeFile(fullSizeRenamed, "full");
+  const thumbnailResized = await handleResizeFile(fullSizeResized, "thumbnail");
   const thumbnailRenamed = await renameThumbnailFile(thumbnailResized);
 
   const fullSizeUploadSetting = createUploadFileSetting(
-    fullSizeRenamed,
+    fullSizeResized,
     BUCKET
   ) as UploadFileSettingType[];
   const thumbnailUploadSetting = createUploadFileSetting(
@@ -103,7 +104,7 @@ function File({
         {!initial && (
           <>
             <Image
-              src={URL.createObjectURL(imageItems[0].Body)}
+              src={URL.createObjectURL(imageItems[1].Body)}
               alt={imageItems[0].Key}
               fill={true}
               style={{ objectFit: "contain", position: "absolute" }}

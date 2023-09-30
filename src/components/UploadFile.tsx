@@ -8,14 +8,14 @@ import File from "./File";
 function UploadFile() {
   const files = useRef<HTMLInputElement>(null);
   const BUCKET = "baronesscostume";
-  const PREFIX = "s1.s2.";
+  const PREFIX = "C1.S1.";
   const [fullSizeFileList, setFullSizeFileList] = useState<File[]>([]);
   const [startUpload, setStartUpload] = useState<boolean>(false);
+
   async function handleSelectImage() {
     const rawFileArr = Array.from(files.current?.files || []);
+    const fullSizeRenamed = await renameFile(rawFileArr, PREFIX);
 
-    const fullSizeResized = await handleResizeFile(rawFileArr, "full");
-    const fullSizeRenamed = await renameFile(fullSizeResized, PREFIX);
     setFullSizeFileList((prev: File[]) => {
       return [...prev, ...fullSizeRenamed];
     });
