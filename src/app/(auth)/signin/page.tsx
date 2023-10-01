@@ -3,9 +3,7 @@ import { signIn } from "next-auth/react";
 
 function page() {
   return (
-    <div>
-      <button onClick={() => signIn("google")}>Sign in</button>
-    </div>
+    <div>{/* <button onClick={() => signIn("google")}>Sign in</button> */}</div>
   );
 }
 

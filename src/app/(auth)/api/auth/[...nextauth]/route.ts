@@ -1,4 +1,3 @@
-import { signOut } from "next-auth/react";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -50,3 +49,4 @@ export const authOption = {
 const handler = NextAuth(authOption);
 
 export { handler as GET, handler as POST };
+export const runtime = "edge";
