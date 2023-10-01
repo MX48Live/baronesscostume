@@ -1,4 +1,4 @@
-import { authOption } from "@/app/(auth)/api/auth/[...nextauth]/route";
+// import { authOption } from "@/app/(auth)/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 
 async function AdminAuthen() {
