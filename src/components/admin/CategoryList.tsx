@@ -3,44 +3,49 @@ import { cn } from "@/helper/cn";
 import Link from "next/link";
 import React from "react";
 
-function handleActiveLink(id: string, categoryIdParams: string) {
-  return id === categoryIdParams ? "bg-red-300" : "";
+function handleActiveLink(
+  id: string | undefined,
+  categoryIdParams: string | undefined
+) {
+  return id === categoryIdParams ? "bg-lightgreen/20 text-gold" : "";
 }
 
 function CategoryList({
   category,
   categoryId,
+  setCurrentId,
 }: {
   category: CategoryType;
-  categoryId: string;
+  categoryId: string | undefined;
+  setCurrentId: React.Dispatch<React.SetStateAction<string | undefined>>;
 }) {
   return (
     <div>
       {category.map((cate) => (
         <div key={cate.id}>
-          <Link
+          <button
             className={cn(
-              `px-2 py-1 my-1 block hover:bg-red-300 rounded-md overflow-hidden`,
+              `px-2 py-1 my-1 block w-full text-left hover:bg-lightgreen/20 rounded-md overflow-hidden text-green`,
               handleActiveLink(cate.id, categoryId)
             )}
-            href={cate.id}
+            onClick={() => setCurrentId(cate.id)}
           >
             <div className="">{cate.name}</div>
-          </Link>
+          </button>
           <div className="pl-3">
             {cate.sub &&
               cate.sub.length > 0 &&
               cate.sub.map((sub) => (
-                <Link
+                <button
                   className={cn(
-                    `px-2 py-1 my-1 block hover:bg-red-300 rounded-md overflow-hidden`,
+                    `px-2 py-1 my-1 block w-full text-left hover:bg-lightgreen/20 rounded-md overflow-hidden text-green`,
                     handleActiveLink(cate.id + "." + sub.id, categoryId)
                   )}
                   key={sub.id}
-                  href={cate.id + "." + sub.id}
+                  onClick={() => setCurrentId(cate.id + "." + sub.id)}
                 >
                   <div className="">{sub.name}</div>
-                </Link>
+                </button>
               ))}
           </div>
         </div>
