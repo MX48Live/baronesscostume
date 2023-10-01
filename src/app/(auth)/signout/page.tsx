@@ -2,10 +2,17 @@
 
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 function SignOut() {
   const router = useRouter();
-  signOut({ redirect: false }).then(() => router.push("/"));
+  const [initialized, setInitialized] = useState(false);
+  useEffect(() => {
+    if (!initialized) {
+      signOut({ redirect: false }).then(() => router.push("/"));
+      setInitialized(true);
+    }
+  }, [router, initialized]);
   return null;
 }
 
