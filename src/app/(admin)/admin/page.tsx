@@ -1,6 +1,6 @@
 import { UserButton } from "@clerk/nextjs";
 
-async function AdminAuthen() {
+function AdminAuthen() {
   return (
     <div>
       Welcome to admin ja
