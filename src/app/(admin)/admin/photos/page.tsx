@@ -8,12 +8,13 @@ import { LiaMehSolid } from "react-icons/lia";
 import { R2 } from "@/lib/r2";
 import { ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { ImSpinner5 } from "react-icons/im";
+import Image from "next/image";
 
 function handleCategoryID(category: CategoryType, id: string | undefined) {
   if (id == undefined) return undefined;
 
   const cateArr = id.split(".");
-  if (cateArr.length == 1) return category.filter((cate) => cate.id == id);
+  if (cateArr.length == 1) return category.filter((cate) => cate.id == id)[0];
   if (cateArr.length == 2) {
     const cate = category.filter((cate) => cate.id == cateArr[0])[0];
     if (cate == undefined) return undefined;
@@ -120,9 +121,21 @@ function Photos() {
                 </div>
               )}
               {data.length > 0 && (
-                <div className="flex justify-center align-middle items-center w-full">
-                  <div className="text-[30px] text-[#666] flex flex-col items-center mb-20">
-                    <div>data</div>
+                <div className="flex w-full">
+                  <div className="text-[30px] text-[#666] flex flex-wrap gap-2">
+                    {data.map((item) => (
+                      <div
+                        key={item.Key}
+                        className="relative w-[120px] h-[120px] shadow-sm hover:shadow-md transition-shadow border-4 border-[#fff]"
+                      >
+                        <Image
+                          src={`${process.env.NEXT_PUBLIC_ASSETS_URL}/${item.Key}`}
+                          layout={"fill"}
+                          objectFit={"contain"}
+                          alt=""
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
