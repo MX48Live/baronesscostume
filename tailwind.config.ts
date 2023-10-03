@@ -10,6 +10,7 @@ const config: Config = {
     colors: {
       green: "#1A5E59",
       gold: "#C48F18",
+      lightgold: "#ffc033",
       lightgreen: "#6E8F8D",
       light: "#EAEFE9",
     },

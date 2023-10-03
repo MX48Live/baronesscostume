@@ -59,13 +59,23 @@ async function handleFileUpload(
 }
 
 function File({
-  image,
+  file,
   bucket,
   startUpload,
+  fileIndex,
+  currentProcessPointer,
+  setCurrentProcessPointer,
+  currentUploadPointer,
+  setCurrentUploadPointer,
 }: {
-  image: File;
+  file: File;
   bucket: string;
   startUpload: boolean;
+  fileIndex: number;
+  currentProcessPointer: number;
+  setCurrentProcessPointer: Dispatch<React.SetStateAction<number>>;
+  currentUploadPointer: number;
+  setCurrentUploadPointer: Dispatch<React.SetStateAction<number>>;
 }) {
   const [initial, setInitial] = useState(true);
   const [imageItems, setImageItems] = useState<UploadFileSettingType[]>([]);
@@ -74,50 +84,91 @@ function File({
   >("pending");
 
   useEffect(() => {
-    if (initial) {
-      Initializing([image], bucket).then(
-        (response: UploadFileSettingType[]) => {
-          setImageItems(response);
-          setInitial(false);
-        }
-      );
+    if (fileIndex == currentProcessPointer) {
+      if (initial) {
+        Initializing([file], bucket).then(
+          (response: UploadFileSettingType[]) => {
+            setImageItems(response);
+            setInitial(false);
+          }
+        );
+        setCurrentProcessPointer((prev) => prev + 1);
+      }
     }
-    if (startUpload) {
-      handleFileUpload(imageItems).then((response: any) => {
-        setStatus("uploading");
-        handleStatus(response, setStatus);
-      });
+
+    if (!initial) {
+      if (startUpload && fileIndex == currentUploadPointer) {
+        handleFileUpload(imageItems).then((response: any) => {
+          setStatus("uploading");
+          handleStatus(response, setStatus);
+          setCurrentUploadPointer((prev) => prev + 1);
+        });
+      }
     }
-  }, [startUpload, imageItems, initial, image, bucket]);
+  }, [
+    startUpload,
+    imageItems,
+    initial,
+    file,
+    bucket,
+    currentProcessPointer,
+    fileIndex,
+    setCurrentProcessPointer,
+    currentUploadPointer,
+    setCurrentUploadPointer,
+  ]);
 
   return (
-    <div style={{ display: "inline-block" }}>
-      <div
-        style={{
-          width: "200px",
-          height: "200px",
-          display: "block",
-          position: "relative",
-        }}
-      >
-        {initial && <div>Loading...</div>}
+    <div className="text-center">
+      <div className="relative flex items-center justify-center w-[120px] h-[120px] shadow-sm hover:shadow-md transition-shadow border-4 border-[#fff] mb-1">
+        {initial && (
+          <div>
+            <img src="/loading.gif" alt="Loading..." className="w-[20px]" />
+          </div>
+        )}
+        {!initial && (
+          <img
+            src={URL.createObjectURL(imageItems[1].Body)}
+            alt={imageItems[0].Key}
+            className="max-w-full max-h-full object-cover"
+          />
+        )}
+      </div>
+      <div>
+        {initial && (
+          <div className="text-[10px] mt-2">
+            <img
+              src="/loading.gif"
+              alt="loading"
+              className="inline-block w-[10px]"
+            />{" "}
+            Queuing
+          </div>
+        )}
         {!initial && (
           <>
-            <Image
-              src={URL.createObjectURL(imageItems[1].Body)}
-              alt={imageItems[0].Key}
-              fill={true}
-              style={{ objectFit: "contain", position: "absolute" }}
-            />
+            {status == "pending" && (
+              <div className="text-[10px] mt-2">PENDING</div>
+            )}
+            {status == "uploading" && (
+              <div className="text-[10px] mt-2">
+                <img
+                  src="/loading.gif"
+                  alt="loading"
+                  className="inline-block w-[10px]"
+                />{" "}
+                Uploading
+              </div>
+            )}
+            {status == "success" && (
+              <div className="text-[10px] mt-2 text-[green]">✅ Success</div>
+            )}
+            {status == "fail" && (
+              <div className="text-[10px] mt-2 text-[red]">❌ Failed</div>
+            )}
           </>
         )}
       </div>
-      {!initial && (
-        <>
-          <div>{status}</div>
-        </>
-      )}
-      <br />
     </div>
   );
 }
