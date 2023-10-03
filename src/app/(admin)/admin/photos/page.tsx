@@ -30,7 +30,13 @@ function handleCategoryID(category: CategoryType, id: string | undefined) {
 function handleShowName(id: string | undefined) {
   if (id == undefined) return undefined;
   const cateArr = id.split(".");
-  return cateArr[3];
+  if (cateArr.length == 4) {
+    return cateArr[2];
+  }
+  if (cateArr.length == 5) {
+    return cateArr[3];
+  }
+  return id;
 }
 
 function Photos() {

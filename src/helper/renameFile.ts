@@ -14,11 +14,20 @@ export async function renameFile(files: File[], prefix: string) {
 export async function renameThumbnailFile(files: File[]) {
   const res = files.map((file: File) => {
     const nameArr = file.name.split(".");
-    const newName = `${nameArr[0]}.${nameArr[1]}.thumbnail.${nameArr[2]}.${nameArr[3]}`;
-    const newFile = new File([file], newName, {
-      type: file.type,
-    });
-    return newFile;
+    if (nameArr.length == 4) {
+      const newName = `${nameArr[0]}.${nameArr[1]}.thumbnail.${nameArr[2]}.${nameArr[3]}`;
+      const newFile = new File([file], newName, {
+        type: file.type,
+      });
+      return newFile;
+    }
+    if (nameArr.length == 3) {
+      const newName = `${nameArr[0]}.thumbnail.${nameArr[1]}.${nameArr[2]}`;
+      const newFile = new File([file], newName, {
+        type: file.type,
+      });
+      return newFile;
+    }
   });
   return res;
 }

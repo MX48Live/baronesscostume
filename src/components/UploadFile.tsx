@@ -1,10 +1,9 @@
 "use client";
 
 import { renameFile } from "@/helper/renameFile";
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import File from "./File";
 import clsx from "clsx";
-import { useRouter } from "next/navigation";
 
 function UploadFile({
   currentId,
@@ -22,7 +21,6 @@ function UploadFile({
   const files = useRef<HTMLInputElement>(null);
   const BUCKET = "baronesscostume";
   const PREFIX = currentId + ".";
-  const rounter = useRouter();
 
   const [fullSizeFileList, setFullSizeFileList] = useState<File[]>([]);
 
