@@ -20,8 +20,7 @@ export async function renameThumbnailFile(files: File[]) {
         type: file.type,
       });
       return newFile;
-    }
-    if (nameArr.length == 3) {
+    } else {
       const newName = `${nameArr[0]}.thumbnail.${nameArr[1]}.${nameArr[2]}`;
       const newFile = new File([file], newName, {
         type: file.type,
