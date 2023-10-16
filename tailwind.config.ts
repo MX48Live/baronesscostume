@@ -13,6 +13,7 @@ const config: Config = {
       lightgold: "#ffc033",
       lightgreen: "#6E8F8D",
       light: "#EAEFE9",
+      bglight: "#F9F8F3",
     },
     extend: {
       backgroundImage: {

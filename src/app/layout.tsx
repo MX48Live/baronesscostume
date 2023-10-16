@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "@/styles/Main.scss";
-
 export const metadata: Metadata = {
   title: "Baroness Costume System",
 };
