@@ -14,6 +14,8 @@ const config: Config = {
       lightgreen: "#6E8F8D",
       light: "#EAEFE9",
       bglight: "#F9F8F3",
+      white: "#FFFFFF",
+      link: "#FCEDA0",
     },
     extend: {
       backgroundImage: {
