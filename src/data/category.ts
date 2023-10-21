@@ -1,3 +1,9 @@
+export type CategoryItemType = {
+  id: string;
+  name: string;
+  sub?: { id: string; name: string }[];
+};
+
 export const category = [
   {
     id: "C01",

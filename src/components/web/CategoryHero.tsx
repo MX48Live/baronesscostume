@@ -1,10 +1,9 @@
-import { useModalStore } from "@/store/Modal";
 import Image from "next/image";
 import Link from "next/link";
 import CategoryButton from "./CategoryButton";
 import { linkList } from "@/data/linklist";
 
-function Hero() {
+function CategoryHero({ categoryName }: { categoryName: string | undefined }) {
   return (
     <div
       className="bg-bglight bg-no-repeat bg-center"
@@ -18,9 +17,12 @@ function Hero() {
           height={120}
           src={`/full-main-logo.png`}
           alt="Baroness Costume"
-          className="hidden lg:inline-block"
+          className="hidden lg:inline-block mb-5"
         />
-        <p className="py-6 block lg:pt-12 lg:pb-8 max-w-[900px] mx-auto text-green">
+        <h1 className="text-[33px] font-bold text-green">
+          บริการเช่า{categoryName}
+        </h1>
+        <p className="block max-w-[900px] mx-auto text-green py-6">
           Baroness Costume บริการเช่าชุดหลากหลายประเภท ชุดไทย ชุดไทยร่วมสมัย
           ชุดไทยประยุกต์ ชุดแฟนซี ชุดคอสเพลย์ ชุดลีดเดอร์ ชุดนานาชาติ ชุด AEC
           ชุดแดนซ์เซอร์ ชุดนักร้อง ชุดราตรี ชุดย้อนยุค ชุดเจ้าหญิง ชุดเจ้าชาย
@@ -73,4 +75,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default CategoryHero;

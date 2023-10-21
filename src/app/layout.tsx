@@ -1,7 +1,17 @@
 import type { Metadata } from "next";
 import "@/styles/Main.scss";
 export const metadata: Metadata = {
-  title: "Baroness Costume System",
+  title: "Baroness Costume",
+  description:
+    "บริการเช่าชุดหลากหลายประเภท ชุดไทย ชุดไทยร่วมสมัย ชุดไทยประยุกต์ ชุดแฟนซี ชุดคอสเพลย์ ชุดลีดเดอร์ ชุดนานาชาติ ชุด AEC ชุดแดนซ์เซอร์ ชุดนักร้อง ชุดราตรี ชุดย้อนยุค ชุดเจ้าหญิง ชุดเจ้าชาย ชุดการแสดง ฯลฯ",
+  openGraph: {
+    title: "Baroness Costume",
+    description:
+      "บริการเช่าชุดหลากหลายประเภท ชุดไทย ชุดไทยร่วมสมัย ชุดไทยประยุกต์ ชุดแฟนซี ชุดคอสเพลย์ ชุดลีดเดอร์ ชุดนานาชาติ ชุด AEC ชุดแดนซ์เซอร์ ชุดนักร้อง ชุดราตรี ชุดย้อนยุค ชุดเจ้าหญิง ชุดเจ้าชาย ชุดการแสดง ฯลฯ",
+    type: "website",
+    url: "https://baronesscostume.com",
+    images: "/baroness-costume.png",
+  },
 };
 
 export default async function RootLayout({

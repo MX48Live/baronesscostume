@@ -1,3 +1,4 @@
+import { linkList } from "@/data/linklist";
 import Link from "next/link";
 
 function Location() {
@@ -15,8 +16,9 @@ function Location() {
           </div>
           <div className="mb-14">
             <Link
-              href="#"
-              className="border-2 border-green px-3 py-3 font-bold text-green rounded-xl hover:bg-green/10 hover:text-white transition-all"
+              href={linkList.map}
+              target="_blank"
+              className="border-2 border-green px-3 py-3 font-bold text-green rounded-xl hover:bg-green/10 transition-all"
             >
               ดูแผนที่ Google Map
             </Link>

@@ -1,6 +1,5 @@
 "use client";
 
-import { UserButton } from "@clerk/nextjs";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -35,9 +34,7 @@ function Navbar() {
           </Link>
         </div>
       </div>
-      <div>
-        <UserButton afterSignOutUrl="/" />
-      </div>
+      <div>{/* <UserButton afterSignOutUrl="/" /> */}</div>
     </div>
   );
 }

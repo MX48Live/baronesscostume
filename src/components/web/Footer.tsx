@@ -1,6 +1,8 @@
 import { category } from "@/data/category";
 import Image from "next/image";
 import Link from "next/link";
+import CategoryButton from "./CategoryButton";
+import { linkList } from "@/data/linklist";
 
 function Footer() {
   return (
@@ -15,24 +17,22 @@ function Footer() {
             <div className="mb-5">
               <ul className="flex gap-4 text-link ">
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href={linkList.home} className="hover:underline">
                     หน้าแรก
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
-                    หมวดหมู่ชุด
-                  </a>
+                  <CategoryButton className="hover:underline" />
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href={linkList.guide} className="hover:underline">
                     ขั้นตอนการเช่าชุด
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href={linkList.contact} className="hover:underline">
                     ติดต่อเรา
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -43,7 +43,8 @@ function Footer() {
                 แขวงนวมินทร์ เขตบึงกุ่ม กทม 10240
                 <br />
                 <Link
-                  href="tel:+66924616196"
+                  href={linkList.map}
+                  target="_blank"
                   className="text-link mt-2 hover:underline inline-block"
                 >
                   ดูแผนที่ Google Map
@@ -51,17 +52,14 @@ function Footer() {
               </p>
             </div>
             <div className="mb-5">
-              <p className="">
+              <p>
                 วันจันทร์ - ศุกร์ 11:00 น. — 19:00 น. <br />
                 วันเสาร์ 11:00 น. — 17:00 น. (หยุดวันอาทิตย์)
               </p>
             </div>
             <div className="mb-5">
-              <Link
-                href="tel:+66924616196"
-                className="hover:underline inline-block text-link"
-              >
-                <div className="flex gap-2 items-center">
+              <div className="hover:underline inline-block text-link">
+                <Link href={linkList.tel} className="flex gap-2 items-center">
                   <div>
                     <Image
                       src="/footer/icon-footer-call.png"
@@ -71,12 +69,12 @@ function Footer() {
                     />
                   </div>
                   <div>092-461-6196</div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
             <div className="mb-5">
               <div className="flex gap-4">
-                <Link href="#">
+                <Link href={linkList.facebook} target="_blank">
                   <Image
                     src="/footer/icon-footer-facebook.png"
                     alt="Facebook"
@@ -84,7 +82,7 @@ function Footer() {
                     height={30}
                   />
                 </Link>
-                <Link href="#">
+                <Link href={linkList.line} target="_blank">
                   <Image
                     src="/footer/icon-footer-line.png"
                     alt="LINE"
@@ -92,7 +90,7 @@ function Footer() {
                     height={30}
                   />
                 </Link>
-                <Link href="#">
+                <Link href={linkList.instagram} target="_blank">
                   <Image
                     src="/footer/icon-footer-ig.png"
                     alt="Instagram"

@@ -1,14 +1,15 @@
-import { linkList } from "@/data/linklist";
 import Image from "next/image";
 import Link from "next/link";
 
-function ContactUs() {
+function GuidePage() {
   return (
-    <div className="bg-bglight py-12">
+    <div className="bg-bglight py-12 pb-40">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="font-bold text-green text-[30px] mb-7">ติดต่อเรา</h2>
+        <h2 className="font-bold text-green text-[30px] mb-7">
+          ขั้นตอนการเช่าชุด
+        </h2>
         <Link
-          href={linkList.tel}
+          href="/"
           className="whitespace-nowrap items-center inline-block text-[30px]"
         >
           <span className="flex items-center gap-3 text-green">
@@ -44,7 +45,7 @@ function ContactUs() {
         </div>
         <div className="flex justify-center gap-4 md:gap-10 lg:gap-20 mt-5">
           <div>
-            <Link href={linkList.facebook} target="_blank">
+            <Link href={"#"} target="_blank">
               <Image
                 width={40}
                 height={40}
@@ -56,7 +57,7 @@ function ContactUs() {
             </Link>
           </div>
           <div>
-            <Link href={linkList.line} target="_blank">
+            <Link href={"https://lin.ee/2Pc9pyC"} target="_blank">
               <Image
                 width={40}
                 height={40}
@@ -68,7 +69,7 @@ function ContactUs() {
             </Link>
           </div>
           <div>
-            <Link href={linkList.instagram} target="_blank">
+            <Link href={"#"} target="_blank">
               <Image
                 width={40}
                 height={40}
@@ -85,4 +86,4 @@ function ContactUs() {
   );
 }
 
-export default ContactUs;
+export default GuidePage;
