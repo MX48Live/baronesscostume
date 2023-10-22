@@ -105,7 +105,13 @@ function FullScreenImage({
           <BsFillCaretRightSquareFill />
         </button>
       </div>
-      <div className="flex p-5 justify-center w-full">
+      <div
+        className="flex p-5 justify-center w-full bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url(/main-logo.png)",
+          backgroundSize: "300px",
+        }}
+      >
         <div className="flex">
           <img
             alt={""}
