@@ -10,7 +10,7 @@ function CategoryModal() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      if (isModalOpen == true) {
+      if (isModalOpen) {
         document.body.style.overflow = "hidden";
       }
     }

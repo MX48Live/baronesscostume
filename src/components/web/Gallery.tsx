@@ -5,7 +5,7 @@ import {
   ListObjectsV2Command,
   ListObjectsCommandOutput,
 } from "@aws-sdk/client-s3";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import FullScreenImage from "./FullScreenImage";
 
 export type ObjectType = {
@@ -17,6 +17,8 @@ export type ObjectType = {
 function Gallery({ categoryId }: { categoryId: string }) {
   const [data, setData] = useState<undefined | ObjectType[]>(undefined);
   const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentItem, setCurrentItem] = useState<number>(0);
 
   useEffect(() => {
     setLoading(true);
@@ -24,10 +26,10 @@ function Gallery({ categoryId }: { categoryId: string }) {
       new ListObjectsV2Command({
         Bucket: "baronesscostume",
         Prefix: categoryId + `.thumbnail`,
-      }),
+      })
     )
       .then((res: ListObjectsCommandOutput) =>
-        setData((res.Contents as any) || []),
+        setData((res.Contents as any) || [])
       )
       .finally(() => setLoading(false));
   }, [categoryId]);
@@ -40,11 +42,14 @@ function Gallery({ categoryId }: { categoryId: string }) {
           }
         >
           {data &&
-            data.map((item: ObjectType) => (
+            data.map((item: ObjectType, index: number) => (
               <button
                 key={item.Key}
+                onClick={() =>
+                  handleOpenFullImage(index, setCurrentItem, setIsOpen)
+                }
                 className={
-                  "flex items-center justify-center rounded-lg p-2 bg-[#CCCCCC]/20 hover:bg-gold/20 transition-all object-contain"
+                  "flex items-center justify-center rounded-lg p-2 bg-[#CCCCCC]/20 hover:bg-gold/20 transition-all object-contain outline-none"
                 }
               >
                 <img
@@ -56,9 +61,26 @@ function Gallery({ categoryId }: { categoryId: string }) {
             ))}
         </div>
       )}
-      {data && <FullScreenImage data={data} />}
+      {data && isOpen && (
+        <FullScreenImage
+          data={data}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          currentItem={currentItem}
+          setCurrentItem={setCurrentItem}
+        />
+      )}
     </>
   );
 }
 
 export default Gallery;
+
+function handleOpenFullImage(
+  index: number,
+  setter: Dispatch<SetStateAction<number>>,
+  open: Dispatch<SetStateAction<boolean>>
+) {
+  setter(index);
+  open(true);
+}
