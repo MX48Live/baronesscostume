@@ -24,7 +24,7 @@ function CategoryModal() {
   return (
     <div>
       {isModalOpen && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-green/60 flex">
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-green/60 flex z-[999]">
           <div className="w-full text-center p-5 overflow-y-auto">
             <div className=" bg-white max-w-[980px] w-full rounded-lg mx-auto">
               <div className="py-4 px-6 border-b border-b-lightgreen/20 flex justify-between items-center">

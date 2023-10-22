@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import CategoryModal from "./CategoryModal";
 import { linkList } from "@/data/linklist";
 import CategoryButton from "./CategoryButton";
+import NavFav from "./NavFav";
 
 function Header() {
   const path = usePathname();
@@ -64,32 +65,37 @@ function Header() {
             </Link>
           </div>
         </div>
-        <div className="flex gap-3 items-center">
-          <Link
-            href={linkList.tel}
-            className="border-2 border-green rounded-lg whitespace-nowrap font-bold px-2 py-1.5 flex gap-1 items-center hover:bg-green/10"
-          >
-            <Image
-              width={24}
-              height={24}
-              src={`/nav/icon-nav-call.png`}
-              alt="Call"
-            />
-            092-461-6196
-          </Link>
-          <Link
-            href={linkList.line}
-            target="_blank"
-            className="border-2 border-green rounded-lg whitespace-nowrap font-bold px-2 py-1.5 flex gap-1 items-center hover:bg-green/10"
-          >
-            <Image
-              width={24}
-              height={24}
-              src={`/nav/icon-nav-line.png`}
-              alt="LINE"
-            />
-            @Baroness101
-          </Link>
+        <div className="lg:flex gap-2 items-center">
+          <div className="flex gap-2 items-center">
+            <Link
+              href={linkList.tel}
+              className="border-2 border-green rounded-lg whitespace-nowrap font-bold px-2 py-1.5 flex gap-1 items-center hover:bg-green/10"
+            >
+              <Image
+                width={24}
+                height={24}
+                src={`/nav/icon-nav-call.png`}
+                alt="Call"
+              />
+              092-461-6196
+            </Link>
+            <Link
+              href={linkList.line}
+              target="_blank"
+              className="border-2 border-green rounded-lg whitespace-nowrap font-bold px-2 py-1.5 flex gap-1 items-center hover:bg-green/10"
+            >
+              <Image
+                width={24}
+                height={24}
+                src={`/nav/icon-nav-line.png`}
+                alt="LINE"
+              />
+              @Baroness101
+            </Link>
+          </div>
+          <div className="mt-3 lg:mt-0">
+            <NavFav />
+          </div>
         </div>
       </div>
       <CategoryModal />

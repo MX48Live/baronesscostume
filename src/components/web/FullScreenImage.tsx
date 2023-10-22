@@ -8,6 +8,7 @@ import { AiFillCloseSquare } from "react-icons/ai";
 import clsx from "clsx";
 import Link from "next/link";
 import { linkList } from "@/data/linklist";
+import FavoriteItem from "./FavoriteItem";
 
 function FullScreenImage({
   displayItems,
@@ -20,16 +21,19 @@ function FullScreenImage({
   currentDisplayItems: number;
   setCurrentDisplayItems: Dispatch<SetStateAction<number>>;
 }) {
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
         handleNext(
           displayItems.length,
           currentDisplayItems,
-          setCurrentDisplayItems
+          setCurrentDisplayItems,
+          setIsLoading
         );
       } else if (event.key === "ArrowLeft") {
-        handlePrev(currentDisplayItems, setCurrentDisplayItems);
+        handlePrev(currentDisplayItems, setCurrentDisplayItems, setIsLoading);
       } else if (event.key === "Escape") {
         handleCloseModal(setIsOpen);
       }
@@ -69,7 +73,11 @@ function FullScreenImage({
       <div className={"fixed top-[50%] translate-y-[-50%] left-4"}>
         <button
           onClick={() =>
-            handlePrev(currentDisplayItems, setCurrentDisplayItems)
+            handlePrev(
+              currentDisplayItems,
+              setCurrentDisplayItems,
+              setIsLoading
+            )
           }
           className={clsx(
             "text-[40px] lg:text-[50px] text-link opacity-70 hover:opacity-100 p-4 z-[999] outline-none",
@@ -85,7 +93,8 @@ function FullScreenImage({
             handleNext(
               displayItems.length,
               currentDisplayItems,
-              setCurrentDisplayItems
+              setCurrentDisplayItems,
+              setIsLoading
             )
           }
           className={clsx(
@@ -129,6 +138,11 @@ function FullScreenImage({
           </Link>
         </div>
       </div>
+      {!isLoading && (
+        <div className="absolute bottom-8 right-4 text-[20px] bg-white/80 p-2 rounded-md">
+          <FavoriteItem keyItem={displayItems[currentDisplayItems].Key} />
+        </div>
+      )}
     </div>
   );
 }
@@ -138,20 +152,30 @@ export default FullScreenImage;
 function handleNext(
   length: number,
   currentDisplayItems: number,
-  setCurrentDisplayItems: Dispatch<SetStateAction<number>>
+  setCurrentDisplayItems: Dispatch<SetStateAction<number>>,
+  setIsLoading: Dispatch<SetStateAction<boolean>>
 ) {
+  setIsLoading(true);
   if (currentDisplayItems < length - 1) {
     setCurrentDisplayItems((prev: number) => prev + 1);
   }
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 0);
 }
 
 function handlePrev(
   currentDisplayItems: number,
-  setCurrentDisplayItems: Dispatch<SetStateAction<number>>
+  setCurrentDisplayItems: Dispatch<SetStateAction<number>>,
+  setIsLoading: Dispatch<SetStateAction<boolean>>
 ) {
+  setIsLoading(true);
   if (currentDisplayItems > 0) {
     setCurrentDisplayItems((prev: number) => prev - 1);
   }
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 0);
 }
 
 function handleFileName(fileName: string) {
