@@ -6,6 +6,8 @@ import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
+export const runtime = "edge";
+
 function CategoryPage({ params }: { params: { categoryId: string } }) {
   const categoryName = getCategoryName(
     params.categoryId.toUpperCase(),
