@@ -27,7 +27,7 @@ function Header() {
               <Image
                 width={140}
                 height={72}
-                src={`/nav/main-logo.png`}
+                src={`/main-logo.png`}
                 alt="Baroness Costume"
                 className="block lg:hidden"
               />

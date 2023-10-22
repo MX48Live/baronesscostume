@@ -33,7 +33,6 @@
     "zustand": "^4.4.3"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.6.1",
     "prettier": "3.0.3"
   }
 }

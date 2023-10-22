@@ -10,24 +10,26 @@ import Link from "next/link";
 import { linkList } from "@/data/linklist";
 
 function FullScreenImage({
-  data,
-  isOpen,
+  displayItems,
   setIsOpen,
-  currentItem,
-  setCurrentItem,
+  currentDisplayItems,
+  setCurrentDisplayItems,
 }: {
-  data: ObjectType[];
-  isOpen: boolean;
+  displayItems: ObjectType[];
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  currentItem: number;
-  setCurrentItem: Dispatch<SetStateAction<number>>;
+  currentDisplayItems: number;
+  setCurrentDisplayItems: Dispatch<SetStateAction<number>>;
 }) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
-        handleNext(data.length, currentItem, setCurrentItem);
+        handleNext(
+          displayItems.length,
+          currentDisplayItems,
+          setCurrentDisplayItems
+        );
       } else if (event.key === "ArrowLeft") {
-        handlePrev(currentItem, setCurrentItem);
+        handlePrev(currentDisplayItems, setCurrentDisplayItems);
       } else if (event.key === "Escape") {
         handleCloseModal(setIsOpen);
       }
@@ -41,7 +43,12 @@ function FullScreenImage({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentItem, data.length, setCurrentItem]);
+  }, [
+    currentDisplayItems,
+    displayItems.length,
+    setCurrentDisplayItems,
+    setIsOpen,
+  ]);
 
   return (
     <div
@@ -61,10 +68,12 @@ function FullScreenImage({
       </div>
       <div className={"fixed top-[50%] translate-y-[-50%] left-4"}>
         <button
-          onClick={() => handlePrev(currentItem, setCurrentItem)}
+          onClick={() =>
+            handlePrev(currentDisplayItems, setCurrentDisplayItems)
+          }
           className={clsx(
             "text-[40px] lg:text-[50px] text-link opacity-70 hover:opacity-100 p-4 z-[999] outline-none",
-            currentItem == 0 && "hidden"
+            currentDisplayItems == 0 && "hidden"
           )}
         >
           <BsCaretLeftSquareFill />
@@ -72,10 +81,16 @@ function FullScreenImage({
       </div>
       <div className={"fixed top-[50%] translate-y-[-50%] right-4"}>
         <button
-          onClick={() => handleNext(data.length, currentItem, setCurrentItem)}
+          onClick={() =>
+            handleNext(
+              displayItems.length,
+              currentDisplayItems,
+              setCurrentDisplayItems
+            )
+          }
           className={clsx(
             "text-[40px] lg:text-[50px] text-link opacity-70 hover:opacity-100 p-4 z-[999] outline-none",
-            currentItem == data.length - 1 && "hidden"
+            currentDisplayItems == displayItems.length - 1 && "hidden"
           )}
         >
           <BsFillCaretRightSquareFill />
@@ -89,7 +104,7 @@ function FullScreenImage({
             src={
               process.env.NEXT_PUBLIC_ASSETS_URL +
               "/" +
-              handleFileName(data[currentItem].Key)
+              handleFileName(displayItems[currentDisplayItems].Key)
             }
           />
         </div>
@@ -122,20 +137,20 @@ export default FullScreenImage;
 
 function handleNext(
   length: number,
-  currentItem: number,
-  setCurrentItem: Dispatch<SetStateAction<number>>
+  currentDisplayItems: number,
+  setCurrentDisplayItems: Dispatch<SetStateAction<number>>
 ) {
-  if (currentItem < length - 1) {
-    setCurrentItem((prev: number) => prev + 1);
+  if (currentDisplayItems < length - 1) {
+    setCurrentDisplayItems((prev: number) => prev + 1);
   }
 }
 
 function handlePrev(
-  currentItem: number,
-  setCurrentItem: Dispatch<SetStateAction<number>>
+  currentDisplayItems: number,
+  setCurrentDisplayItems: Dispatch<SetStateAction<number>>
 ) {
-  if (currentItem > 0) {
-    setCurrentItem((prev: number) => prev - 1);
+  if (currentDisplayItems > 0) {
+    setCurrentDisplayItems((prev: number) => prev - 1);
   }
 }
 
@@ -146,11 +161,4 @@ function handleFileName(fileName: string) {
 function handleCloseModal(setIsOpen: Dispatch<SetStateAction<boolean>>) {
   setIsOpen(false);
   document.body.style.overflow = "unset";
-}
-
-function fadeIn(cn: string) {
-  setTimeout(() => {
-    return cn;
-  }, 100);
-  return "";
 }
