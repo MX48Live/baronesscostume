@@ -16,7 +16,7 @@ function handleOpenFullImage(
 function GalleryItem({ data }: { data: ObjectType[] }) {
   const [loading, setLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
-  const [itemPerPage] = useState<number>(10);
+  const [itemPerPage] = useState<number>(100);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [displayItems, setDisplayItems] = useState<ObjectType[] | undefined>(
     undefined

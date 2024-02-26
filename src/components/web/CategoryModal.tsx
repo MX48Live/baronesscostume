@@ -44,18 +44,18 @@ function CategoryModal() {
                     <Link
                       href={"/category/" + cate.id}
                       onClick={handleCloseModal}
-                      className="text-[18px] lg:text-[22px] font-bold text-green inline-block border border-green px-3 py-2 rounded-lg hover:bg-green hover:text-white"
+                      className="text-[18px] lg:text-[22px] font-bold text-green flex border border-green px-3 py-2 rounded-lg hover:bg-green hover:text-white"
                     >
                       {cate.name}
                     </Link>
                     {cate.sub && (
-                      <div className="flex flex-wrap gap-2 text-[15px] lg:text-[18px] mt-3 mb-3">
+                      <div className="flex flex-wrap flex-col gap-2 text-[15px] lg:text-[18px] mt-3 mb-3">
                         {cate.sub.map((sub) => (
                           <Link
                             href={"/category/" + cate.id + "." + sub.id}
                             onClick={handleCloseModal}
                             key={sub.id}
-                            className="text-green inline-block border border-green px-2 py-1 rounded-lg hover:bg-green hover:text-white"
+                            className="text-green ml-4 flex bg-green/10 px-2 py-3 rounded-lg hover:bg-green hover:text-white"
                           >
                             {sub.name}
                           </Link>

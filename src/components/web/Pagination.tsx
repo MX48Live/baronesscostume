@@ -22,7 +22,7 @@ function Pagination({
 
   return (
     <div className="block text-center">
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap justify-center">
         {arr.map((item: number) => (
           <button
             key={item}
