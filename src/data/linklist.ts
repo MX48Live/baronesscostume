@@ -7,7 +7,7 @@ export type LinkListType = {
   home: string;
   contact: string;
   guide: string;
-}
+};
 
 export const linkList: LinkListType = {
   tel: "tel:+66924616196",
