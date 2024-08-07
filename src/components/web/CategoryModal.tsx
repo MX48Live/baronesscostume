@@ -51,14 +51,34 @@ function CategoryModal() {
                     {cate.sub && (
                       <div className="flex flex-wrap flex-col gap-2 text-[15px] lg:text-[18px] mt-3 mb-3">
                         {cate.sub.map((sub) => (
-                          <Link
-                            href={"/category/" + cate.id + "." + sub.id}
-                            onClick={handleCloseModal}
-                            key={sub.id}
-                            className="text-green ml-4 flex bg-green/10 px-2 py-3 rounded-lg hover:bg-green hover:text-white"
-                          >
-                            {sub.name}
-                          </Link>
+                          <>
+                            <Link
+                              href={"/category/" + cate.id + "." + sub.id}
+                              onClick={handleCloseModal}
+                              key={sub.id}
+                              className="text-green ml-4 flex bg-green/10 px-2 py-3 rounded-lg hover:bg-green hover:text-white"
+                            >
+                              {sub.name}
+                            </Link>
+                            {sub.sub &&
+                              sub.sub.map((e) => (
+                                <Link
+                                  href={
+                                    "/category/" +
+                                    cate.id +
+                                    "." +
+                                    sub.id +
+                                    "." +
+                                    e.id
+                                  }
+                                  onClick={handleCloseModal}
+                                  key={sub.id}
+                                  className="text-green ml-10 flex bg-green/10 px-2 py-3 rounded-lg hover:bg-green hover:text-white text-base"
+                                >
+                                  {e.name}
+                                </Link>
+                              ))}
+                          </>
                         ))}
                       </div>
                     )}

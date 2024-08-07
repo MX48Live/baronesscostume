@@ -9,7 +9,6 @@ import { ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { ImSpinner5 } from "react-icons/im";
 import Navbar from "@/components/admin/Navbar";
 import UploadFile from "@/components/UploadFile";
-import useSWR from "swr";
 
 function handleCategoryID(category: CategoryType, id: string | undefined) {
   if (id == undefined) return undefined;
@@ -24,6 +23,22 @@ function handleCategoryID(category: CategoryType, id: string | undefined) {
     const cateWithSub = cate.sub.filter((sub) => sub.id == cateArr[1])[0];
     return cateWithSub;
   }
+  if (cateArr.length == 3) {
+    const cate = category.filter((cate) => cate.id == cateArr[0])[0];
+    if (cate == undefined) return undefined;
+    if (cate.sub == undefined) return undefined;
+
+    const cateWithSub = cate.sub.filter((sub) => sub.id == cateArr[1])[0];
+    if (cateWithSub == undefined) return undefined;
+    if (cateWithSub.sub == undefined) return undefined;
+
+    const cateWithSub2 = cateWithSub.sub.filter(
+      (sub) => sub.id == cateArr[2]
+    )[0];
+
+    return cateWithSub2;
+  }
+
   return undefined;
 }
 

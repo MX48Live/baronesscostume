@@ -22,11 +22,11 @@ function CategoryList({
 }) {
   return (
     <div className="absolute bottom-0 top-0 left-0 right-0 p-2">
-      {category.map((cate) => (
-        <div key={cate.id}>
+      {category.map((cate, index) => (
+        <div key={index}>
           <button
             className={cn(
-              `px-2 py-1 my-1 block w-full text-left hover:bg-lightgreen/20 rounded-md overflow-hidden text-green`,
+              `px-2 py-1 my-1 block w-full text-left hover:bg-lightgreen/20 rounded-md overflow-hidden text-green text-sm font-bold`,
               handleActiveLink(cate.id, categoryId)
             )}
             onClick={() => {
@@ -36,23 +36,43 @@ function CategoryList({
           >
             <div className="">{cate.name}</div>
           </button>
-          <div className="pl-3">
+          <div className="pl-1">
             {cate.sub &&
-              cate.sub.length > 0 &&
-              cate.sub.map((sub) => (
-                <button
-                  className={cn(
-                    `px-2 py-1 my-1 block w-full text-left hover:bg-lightgreen/20 rounded-md overflow-hidden text-green`,
-                    handleActiveLink(cate.id + "." + sub.id, categoryId)
-                  )}
-                  key={sub.id}
-                  onClick={() => {
-                    setCurrentId(cate.id + "." + sub.id);
-                    setUploadMode(false);
-                  }}
-                >
-                  <div className="">{sub.name}</div>
-                </button>
+              cate.sub.map((sub, index) => (
+                <>
+                  <button
+                    className={cn(
+                      `px-2 py-1 my-1 block w-full text-left hover:bg-lightgreen/20 rounded-md overflow-hidden text-green text-sm`,
+                      handleActiveLink(cate.id + "." + sub.id, categoryId)
+                    )}
+                    key={index}
+                    onClick={() => {
+                      setCurrentId(cate.id + "." + sub.id);
+                      setUploadMode(false);
+                    }}
+                  >
+                    <div>{sub.name}</div>
+                  </button>
+                  {sub.sub &&
+                    sub.sub.map((e, index) => (
+                      <button
+                        className={cn(
+                          `px-2 py-1 my-1 ml-2 block w-full text-left hover:bg-lightgreen/20 rounded-md overflow-hidden text-green text-xs`,
+                          handleActiveLink(
+                            cate.id + "." + sub.id + "." + e.id,
+                            categoryId
+                          )
+                        )}
+                        key={index}
+                        onClick={() => {
+                          setCurrentId(cate.id + "." + sub.id + "." + e.id);
+                          setUploadMode(false);
+                        }}
+                      >
+                        <div>{e.name}</div>
+                      </button>
+                    ))}
+                </>
               ))}
           </div>
         </div>

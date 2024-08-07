@@ -40,6 +40,7 @@ function getCategoryName(
   category: CategoryItemType[]
 ): string | undefined {
   const cateArr = categoryId.toUpperCase().split(".");
+
   if (cateArr.length == 1) {
     return category.find((cate) => cate.id == categoryId.toUpperCase())?.name;
   }
@@ -47,6 +48,14 @@ function getCategoryName(
     const cate = category.find((cate) => cate.id == cateArr[0]);
     if (cate) {
       return cate.sub?.find((sub) => sub.id == cateArr[1])?.name;
+    }
+  }
+  if (cateArr.length == 3) {
+    const cate = category.find((cate) => cate.id == cateArr[0]);
+    if (cate) {
+      return cate.sub
+        ?.find((sub) => sub.id == cateArr[1])
+        ?.sub?.find((sub) => sub.id == cateArr[2])?.name;
     }
   }
 }
@@ -84,6 +93,11 @@ export async function generateStaticParams() {
       arr.push(cate.id);
       cate.sub.forEach((sub) => {
         arr.push(cate.id + "." + sub.id);
+        if (sub.sub) {
+          sub.sub.forEach((subsub) => {
+            arr.push(cate.id + "." + sub.id + "." + subsub.id);
+          });
+        }
       });
     } else {
       arr.push(cate.id);
