@@ -2,7 +2,6 @@
 import { createUploadFileSetting } from "@/helper/createUploadFileSetting";
 import { handleResizeFile } from "@/helper/handleResizeFile";
 import { renameThumbnailFile } from "@/helper/renameFile";
-import Image from "next/image";
 import { Dispatch, useEffect, useState } from "react";
 import { UploadFileSettingType } from "./UploadFileType";
 import {

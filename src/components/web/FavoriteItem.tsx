@@ -49,7 +49,7 @@ function FavoriteItem({ keyItem }: { keyItem: string }) {
     if (arr.includes(keyItem)) {
       setIsFavorite(true);
     }
-  }, []);
+  }, [keyItem, arr]);
 
   return (
     <>

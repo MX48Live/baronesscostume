@@ -9,6 +9,7 @@ import { ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { ImSpinner5 } from "react-icons/im";
 import Navbar from "@/components/admin/Navbar";
 import UploadFile from "@/components/UploadFile";
+import ImagesWithName from "@/components/admin/ImagesWithName";
 
 function handleCategoryID(category: CategoryType, id: string | undefined) {
   if (id == undefined) return undefined;
@@ -40,18 +41,6 @@ function handleCategoryID(category: CategoryType, id: string | undefined) {
   }
 
   return undefined;
-}
-
-function handleShowName(id: string | undefined) {
-  if (id == undefined) return undefined;
-  const cateArr = id.split(".");
-  if (cateArr.length == 4) {
-    return cateArr[2];
-  }
-  if (cateArr.length == 5) {
-    return cateArr[3];
-  }
-  return id;
 }
 
 function Photos() {
@@ -155,18 +144,7 @@ function Photos() {
                     <div className="flex w-full">
                       <div className="text-[30px] text-[#666] flex flex-wrap gap-2">
                         {data.map((item) => (
-                          <div key={item.Key}>
-                            <div className="relative flex items-center justify-center w-[120px] h-[120px] shadow-sm hover:shadow-md transition-shadow border-4 border-[#fff] mb-1">
-                              <img
-                                src={`${process.env.NEXT_PUBLIC_ASSETS_URL}/${item.Key}`}
-                                className="max-w-full max-h-full object-cover"
-                                alt=""
-                              />
-                            </div>
-                            <div className="line-clamp-1 text-[12px] text-center w-[120px]">
-                              {handleShowName(item.Key)}
-                            </div>
-                          </div>
+                          <ImagesWithName key={item.Key} item={item} />
                         ))}
                       </div>
                     </div>
