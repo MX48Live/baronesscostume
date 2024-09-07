@@ -14,7 +14,7 @@ export const linkList: LinkListType = {
   line: "https://lin.ee/2Pc9pyC",
   facebook: "https://www.facebook.com/shopthailand789",
   instagram: "https://www.instagram.com/baronesscostume",
-  map: "https://maps.app.goo.gl/om52JYWmgUTidrxs6",
+  map: "https://maps.app.goo.gl/zRzvCg8yoLxQAA6c8",
   home: "/",
   contact: "/contact",
   guide: "/guide",
