@@ -12,9 +12,9 @@ export type LinkListType = {
 export const linkList: LinkListType = {
   tel: "tel:+66924616196",
   line: "https://lin.ee/2Pc9pyC",
-  facebook: "https://www.facebook.com",
-  instagram: "https://www.instagram.com",
-  map: "#",
+  facebook: "https://www.facebook.com/shopthailand789",
+  instagram: "https://www.instagram.com/baronesscostume",
+  map: "https://maps.app.goo.gl/om52JYWmgUTidrxs6",
   home: "/",
   contact: "/contact",
   guide: "/guide",

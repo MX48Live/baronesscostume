@@ -1,6 +1,6 @@
 import { CategoryType } from "@/data/category";
 import { cn } from "@/helper/cn";
-import React from "react";
+import React, { Fragment } from "react";
 
 function handleActiveLink(
   id: string | undefined,
@@ -39,7 +39,7 @@ function CategoryList({
           <div className="pl-1">
             {cate.sub &&
               cate.sub.map((sub, index) => (
-                <>
+                <Fragment key={index}>
                   <button
                     className={cn(
                       `px-2 py-1 my-1 block w-full text-left hover:bg-lightgreen/20 rounded-md overflow-hidden text-green text-sm`,
@@ -72,7 +72,7 @@ function CategoryList({
                         <div>{e.name}</div>
                       </button>
                     ))}
-                </>
+                </Fragment>
               ))}
           </div>
         </div>
