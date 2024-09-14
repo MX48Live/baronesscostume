@@ -57,7 +57,7 @@ function CategoryList({
                     sub.sub.map((e, index) => (
                       <button
                         className={cn(
-                          `px-2 py-1 my-1 ml-2 block w-full text-left hover:bg-lightgreen/20 rounded-md overflow-hidden text-green text-xs`,
+                          `px-2 py-1 my-1 block w-full text-left hover:bg-lightgreen/20 rounded-md overflow-hidden text-green text-sm`,
                           handleActiveLink(
                             cate.id + "." + sub.id + "." + e.id,
                             categoryId

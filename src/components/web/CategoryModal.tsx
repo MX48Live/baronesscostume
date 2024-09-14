@@ -73,7 +73,7 @@ function CategoryModal() {
                                   }
                                   onClick={handleCloseModal}
                                   key={sub.id}
-                                  className="text-green ml-10 flex bg-green/10 px-2 py-3 rounded-lg hover:bg-green hover:text-white text-base"
+                                  className="text-green ml-4 flex bg-green/10 px-2 py-3 rounded-lg hover:bg-green hover:text-white"
                                 >
                                   {e.name}
                                 </Link>
