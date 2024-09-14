@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+
 import "@/styles/Main.scss";
 export const metadata: Metadata = {
   metadataBase: new URL("https://baronesscostume.com"),

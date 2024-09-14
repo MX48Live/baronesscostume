@@ -1,10 +1,11 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 import Footer from "@/components/web/Footer";
 import Header from "@/components/web/Header";
-import React from "react";
 
 function WebLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <>
       <header>
         <Header />
       </header>
@@ -12,7 +13,8 @@ function WebLayout({ children }: { children: React.ReactNode }) {
       <footer>
         <Footer />
       </footer>
-    </div>
+      <GoogleAnalytics gaId="G-VNXGSSB6QF" />
+    </>
   );
 }
 
