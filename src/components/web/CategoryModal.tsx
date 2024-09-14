@@ -84,6 +84,13 @@ function CategoryModal() {
                     )}
                   </div>
                 ))}
+                <Link
+                  href={"/guide"}
+                  onClick={handleCloseModal}
+                  className="text-[18px] lg:text-[22px] font-bold text-green flex border border-green px-3 py-2 rounded-lg hover:bg-green hover:text-white"
+                >
+                  22. ขั้นตอนการเช่าชุด-ระยะเวลาในการเช่าชุด-และเงินค่าประกันชุด
+                </Link>
               </div>
             </div>
           </div>
