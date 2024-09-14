@@ -20,12 +20,12 @@ function Hero() {
           alt="Baroness Costume"
           className="hidden lg:inline-block"
         />
-        <p className="py-6 block lg:pt-12 lg:pb-8 max-w-[900px] mx-auto text-green">
+        <h1 className="py-6 block lg:pt-12 lg:pb-8 max-w-[900px] mx-auto text-green">
           Baroness Costume บริการเช่าชุดหลากหลายประเภท ชุดไทย ชุดไทยร่วมสมัย
           ชุดไทยประยุกต์ ชุดแฟนซี ชุดคอสเพลย์ ชุดลีดเดอร์ ชุดนานาชาติ ชุด AEC
           ชุดแดนซ์เซอร์ ชุดนักร้อง ชุดราตรี ชุดย้อนยุค ชุดเจ้าหญิง ชุดเจ้าชาย
           ชุดการแสดง ฯลฯ
-        </p>
+        </h1>
         <div className="gap-3 items-center justify-center hidden lg:flex mb-7">
           <Link
             href={linkList.tel}
