@@ -24,22 +24,6 @@ function handleCategoryID(category: CategoryType, id: string | undefined) {
     const cateWithSub = cate.sub.filter((sub) => sub.id == cateArr[1])[0];
     return cateWithSub;
   }
-  if (cateArr.length == 3) {
-    const cate = category.filter((cate) => cate.id == cateArr[0])[0];
-    if (cate == undefined) return undefined;
-    if (cate.sub == undefined) return undefined;
-
-    const cateWithSub = cate.sub.filter((sub) => sub.id == cateArr[1])[0];
-    if (cateWithSub == undefined) return undefined;
-    if (cateWithSub.sub == undefined) return undefined;
-
-    const cateWithSub2 = cateWithSub.sub.filter(
-      (sub) => sub.id == cateArr[2]
-    )[0];
-
-    return cateWithSub2;
-  }
-
   return undefined;
 }
 

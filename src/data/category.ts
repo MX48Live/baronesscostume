@@ -2,10 +2,14 @@ export type CategoryItemType = {
   id: string;
   name: string;
   description?: string;
-  sub?: { id: string; name: string; description?: string }[];
+  sub?: {
+    id: string;
+    name: string;
+    description?: string;
+  }[];
 };
 
-export const category = [
+export const category: CategoryItemType[] = [
   {
     id: "C01",
     name: "1. ชุดไทย",

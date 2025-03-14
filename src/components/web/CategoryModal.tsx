@@ -60,24 +60,6 @@ function CategoryModal() {
                             >
                               {sub.name}
                             </Link>
-                            {sub.sub &&
-                              sub.sub.map((e) => (
-                                <Link
-                                  href={
-                                    "/category/" +
-                                    cate.id +
-                                    "." +
-                                    sub.id +
-                                    "." +
-                                    e.id
-                                  }
-                                  onClick={handleCloseModal}
-                                  key={sub.id}
-                                  className="text-green ml-4 flex bg-green/10 px-2 py-3 rounded-lg hover:bg-green hover:text-white"
-                                >
-                                  {e.name}
-                                </Link>
-                              ))}
                           </>
                         ))}
                       </div>

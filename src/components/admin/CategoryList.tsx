@@ -53,25 +53,6 @@ function CategoryList({
                   >
                     <div>{sub.name}</div>
                   </button>
-                  {sub.sub &&
-                    sub.sub.map((e, index) => (
-                      <button
-                        className={cn(
-                          `px-2 py-1 my-1 block w-full text-left hover:bg-lightgreen/20 rounded-md overflow-hidden text-green text-sm`,
-                          handleActiveLink(
-                            cate.id + "." + sub.id + "." + e.id,
-                            categoryId
-                          )
-                        )}
-                        key={index}
-                        onClick={() => {
-                          setCurrentId(cate.id + "." + sub.id + "." + e.id);
-                          setUploadMode(false);
-                        }}
-                      >
-                        <div>{e.name}</div>
-                      </button>
-                    ))}
                 </Fragment>
               ))}
           </div>
