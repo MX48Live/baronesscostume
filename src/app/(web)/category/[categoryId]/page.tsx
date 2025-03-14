@@ -24,7 +24,7 @@ export default CategoryPage;
 
 function getCategoryName(
   categoryId: string,
-  category: CategoryItemType[],
+  category: CategoryItemType[]
 ): string | undefined {
   const cateArr = categoryId.split(".");
   if (cateArr.length == 1) {
@@ -58,3 +58,5 @@ export function generateMetadata({
     },
   };
 }
+
+export const runtime = "edge";
