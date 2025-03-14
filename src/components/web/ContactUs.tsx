@@ -26,7 +26,7 @@ function ContactUs() {
 
         <div className="mt-10">
           <div className="text-xl font-bold text-green">
-            แสกนไลน์เพื่อสอบถามการเช่าชุด
+            สแกนไลน์เพื่อสอบถามการเช่าชุด
           </div>
           <div className="mt-3">
             <Image
