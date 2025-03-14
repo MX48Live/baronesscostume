@@ -3,7 +3,13 @@ import Link from "next/link";
 import CategoryButton from "./CategoryButton";
 import { linkList } from "@/data/linklist";
 
-function CategoryHero({ categoryName }: { categoryName: string | undefined }) {
+function CategoryHero({
+  categoryName,
+  description,
+}: {
+  categoryName: string | undefined;
+  description: string | undefined;
+}) {
   return (
     <div
       className="bg-bglight bg-no-repeat bg-center"
@@ -20,13 +26,12 @@ function CategoryHero({ categoryName }: { categoryName: string | undefined }) {
           className="hidden lg:inline-block mb-5"
         />
         <h1 className="text-[33px] font-bold text-green">
-          บริการเช่า{categoryName}
+          บริการเช่า {categoryName}
         </h1>
         <p className="block max-w-[900px] mx-auto text-green py-6">
-          Baroness Costume บริการเช่าชุดหลากหลายประเภท ชุดไทย ชุดไทยร่วมสมัย
-          ชุดไทยประยุกต์ ชุดแฟนซี ชุดคอสเพลย์ ชุดลีดเดอร์ ชุดนานาชาติ ชุด AEC
-          ชุดแดนซ์เซอร์ ชุดนักร้อง ชุดราตรี ชุดย้อนยุค ชุดเจ้าหญิง ชุดเจ้าชาย
-          ชุดการแสดง ฯลฯ
+          {description
+            ? description
+            : "Baroness Costume บริการเช่าชุดหลากหลายประเภท ชุดไทย ชุดไทยร่วมสมัย ชุดไทยประยุกต์ ชุดแฟนซี ชุดคอสเพลย์ ชุดลีดเดอร์ ชุดนานาชาติ ชุด AEC ชุดแดนซ์เซอร์ ชุดนักร้อง ชุดราตรี ชุดย้อนยุค ชุดเจ้าหญิง ชุดเจ้าชาย ชุดการแสดง ฯลฯ"}
         </p>
         <div className="gap-3 items-center justify-center hidden lg:flex mb-7">
           <Link

@@ -6,12 +6,19 @@ import { Suspense } from "react";
 
 function CategoryPage({ params }: { params: { categoryId: string } }) {
   const categoryName = getCategoryName(params.categoryId, category);
+  const categoryDescription = getCategoryDescription(
+    params.categoryId,
+    category
+  );
 
   if (!categoryName) return notFound();
 
   return (
     <div>
-      <CategoryHero categoryName={categoryName} />
+      <CategoryHero
+        categoryName={categoryName}
+        description={categoryDescription}
+      />
       <div className={"bg-bglight p-5"}>
         <Suspense>
           <Gallery categoryId={params.categoryId} />
@@ -34,6 +41,22 @@ function getCategoryName(
     const cate = category.find((cate) => cate.id == cateArr[0]);
     if (cate) {
       return cate.sub?.find((sub) => sub.id == cateArr[1])?.name;
+    }
+  }
+}
+
+function getCategoryDescription(
+  categoryId: string,
+  category: CategoryItemType[]
+): string | undefined {
+  const cateArr = categoryId.split(".");
+  if (cateArr.length == 1) {
+    return category.find((cate) => cate.id == categoryId)?.description;
+  }
+  if (cateArr.length == 2) {
+    const cate = category.find((cate) => cate.id == cateArr[0]);
+    if (cate) {
+      return cate.sub?.find((sub) => sub.id == cateArr[1])?.description;
     }
   }
 }
