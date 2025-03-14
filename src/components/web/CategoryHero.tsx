@@ -66,7 +66,7 @@ function CategoryHero({
             href={linkList.guide}
             className="text-center rounded-lg whitespace-nowrap font-bold text-light bg-green py-3 lg:w-[220px]"
           >
-            ขั้นตอนการเช่าขุด
+            ขั้นตอนการเช่าชุด
           </Link>
           <Link
             href={linkList.contact}

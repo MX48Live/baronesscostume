@@ -15,7 +15,7 @@ function Footer() {
           <div className="mb-8">
             <h3 className="font-bold text-[20px] mb-3">Baroness Costume</h3>
             <div className="mb-5">
-              <ul className="flex gap-4 text-link ">
+              <ul className="flex gap-4 flex-col md:flex-row text-link">
                 <li>
                   <Link href={linkList.home} className="hover:underline">
                     หน้าแรก
@@ -106,7 +106,10 @@ function Footer() {
             <div className="grid md:grid-cols-2 gap-2">
               {category.map((item) => (
                 <div key={item.id} className="block">
-                  <Link href="#" className=" text-link hover:underline text-sm">
+                  <Link
+                    href={`/category/${item.id}`}
+                    className=" text-link hover:underline text-sm"
+                  >
                     เช่า{item.name}
                   </Link>
                 </div>

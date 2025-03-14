@@ -2,14 +2,13 @@
 import { createUploadFileSetting } from "@/helper/createUploadFileSetting";
 import { handleResizeFile } from "@/helper/handleResizeFile";
 import { renameThumbnailFile } from "@/helper/renameFile";
-import Image from "next/image";
 import { Dispatch, useEffect, useState } from "react";
 import { UploadFileSettingType } from "./UploadFileType";
 import {
   PutObjectAclCommandOutput,
   PutObjectCommand,
 } from "@aws-sdk/client-s3";
-import { R2 } from "@/lib/r2";
+import { RW2 } from "@/lib/r2";
 
 async function Initializing(fullSizeRenamed: File[], BUCKET: string) {
   const fullSizeResized = await handleResizeFile(fullSizeRenamed, "full");
@@ -49,8 +48,8 @@ async function handleFileUpload(
   const thumbnail = new PutObjectCommand(item[1]);
   try {
     const response = await Promise.allSettled([
-      R2.send(full),
-      R2.send(thumbnail),
+      RW2.send(full),
+      RW2.send(thumbnail),
     ]);
     return response;
   } catch (err) {

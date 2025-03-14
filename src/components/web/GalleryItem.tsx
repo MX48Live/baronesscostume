@@ -16,7 +16,7 @@ function handleOpenFullImage(
 function GalleryItem({ data }: { data: ObjectType[] }) {
   const [loading, setLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
-  const [itemPerPage] = useState<number>(10);
+  const [itemPerPage] = useState<number>(500);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [displayItems, setDisplayItems] = useState<ObjectType[] | undefined>(
     undefined
@@ -53,8 +53,12 @@ function GalleryItem({ data }: { data: ObjectType[] }) {
                     )
                   }
                   className={
-                    "flex items-center justify-center rounded-lg p-2 bg-[#CCCCCC]/20 hover:bg-gold/20 transition-all object-contain outline-none relative cursor-pointer"
+                    "flex items-center justify-center rounded-lg p-2 bg-[#CCCCCC]/20 hover:bg-gold/20 transition-all object-contain outline-none relative cursor-pointer min-h-[300px] bg-center bg-no-repeat"
                   }
+                  style={{
+                    backgroundImage: "url(/lazy-image.png)",
+                    backgroundSize: "150px",
+                  }}
                 >
                   <img
                     src={process.env.NEXT_PUBLIC_ASSETS_URL + "/" + item.Key}
