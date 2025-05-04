@@ -3,6 +3,7 @@ export type LinkListType = {
   line: string;
   facebook: string;
   instagram: string;
+  tiktok: string;
   map: string;
   home: string;
   contact: string;
@@ -14,6 +15,7 @@ export const linkList: LinkListType = {
   line: "https://lin.ee/2Pc9pyC",
   facebook: "https://www.facebook.com/shopthailand789",
   instagram: "https://www.instagram.com/baronesscostume",
+  tiktok: "https://www.tiktok.com/@baronesscostume",
   map: "https://maps.app.goo.gl/zRzvCg8yoLxQAA6c8",
   home: "/",
   contact: "/contact",

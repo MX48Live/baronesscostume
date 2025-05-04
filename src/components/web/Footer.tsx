@@ -99,6 +99,14 @@ function Footer() {
                     height={30}
                   />
                 </Link>
+                <Link href={linkList.tiktok} target="_blank">
+                  <Image
+                    src="/footer/icon-footer-tiktok.png"
+                    alt="Instagram"
+                    width={30}
+                    height={30}
+                  />
+                </Link>
               </div>
             </div>
           </div>

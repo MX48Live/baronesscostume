@@ -42,7 +42,7 @@ function ContactUs() {
         <div className="text-xl font-bold text-green mt-10">
           ช่องทางการติดต่อเพิ่มเติม
         </div>
-        <div className="flex justify-center gap-4 md:gap-10 lg:gap-20 mt-5">
+        <div className="grid max-w-[800px] mx-auto grid-cols-2 md:grid-cols-4 justify-center gap-4 md:gap-10 lg:gap-20 mt-5">
           <div>
             <Link href={linkList.facebook} target="_blank">
               <Image
@@ -74,6 +74,18 @@ function ContactUs() {
                 height={40}
                 src={`/contact/icon-ig.png`}
                 alt="Instagram"
+                className="inline-block"
+              />
+              <div className="mt-1 text-sm text-green">Baroness Costume</div>
+            </Link>
+          </div>
+          <div>
+            <Link href={linkList.tiktok} target="_blank">
+              <Image
+                width={40}
+                height={40}
+                src={`/contact/icon-tiktok.png`}
+                alt="Tiktok"
                 className="inline-block"
               />
               <div className="mt-1 text-sm text-green">Baroness Costume</div>

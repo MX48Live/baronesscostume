@@ -26,7 +26,7 @@ function Location() {
           </div>
           <div className="max-w-[900px] mx-auto mb-3">
             <img
-              src="/location/map.png"
+              src="/location/map_2.jpg"
               alt="location"
               className="mx-auto rounded-xl shadow-sm"
             />
