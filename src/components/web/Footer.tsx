@@ -36,7 +36,7 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="mb-5">
+            {/* <div className="mb-5">
               <p className="">
                 ห้องเสื้อบารอนเนส คอสตูม 111/105 ซอยโพธิ์แก้วแยก19{" "}
                 <br className="hidden md:block" />
@@ -51,7 +51,7 @@ function Footer() {
                   ดูแผนที่ Google Map
                 </Link>
               </p>
-            </div>
+            </div> */}
             <div className="mb-5">
               <p>
                 วันจันทร์ - ศุกร์ 11:00 น. — 19:00 น. <br />

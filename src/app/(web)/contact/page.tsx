@@ -7,7 +7,7 @@ function ContactPage() {
     <>
       <ContactUs />
       <WorkingHours />
-      <Location />
+      {/* <Location /> */}
     </>
   );
 }
