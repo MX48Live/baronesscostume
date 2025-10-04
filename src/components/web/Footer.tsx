@@ -53,10 +53,7 @@ function Footer() {
               </p>
             </div> */}
             <div className="mb-5">
-              <p>
-                วันจันทร์ - ศุกร์ 11:00 น. — 19:00 น. <br />
-                วันเสาร์ 11:00 น. — 17:00 น. (หยุดวันอาทิตย์)
-              </p>
+              <p>วันจันทร์ - อาทิตย์ 11:00 น. — 18:00 น.</p>
             </div>
             <div className="mb-5">
               <div className="hover:underline inline-block text-link">
