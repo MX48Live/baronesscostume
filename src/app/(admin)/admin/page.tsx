@@ -1,5 +1,4 @@
 import Navbar from "@/components/admin/Navbar";
-import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 function AdminAuthen() {
