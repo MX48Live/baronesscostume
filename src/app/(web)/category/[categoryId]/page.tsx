@@ -61,6 +61,26 @@ function getCategoryDescription(
   }
 }
 
+// Generate static params for all categories at build time
+export async function generateStaticParams() {
+  const params: { categoryId: string }[] = [];
+
+  // Generate params for all categories and subcategories
+  for (const cat of category) {
+    // Add main category (e.g., "C01")
+    params.push({ categoryId: cat.id });
+
+    // Add subcategories (e.g., "C01.S01", "C01.S02")
+    if (cat.sub) {
+      for (const sub of cat.sub) {
+        params.push({ categoryId: `${cat.id}.${sub.id}` });
+      }
+    }
+  }
+
+  return params;
+}
+
 export function generateMetadata({
   params,
 }: {
@@ -81,5 +101,3 @@ export function generateMetadata({
     },
   };
 }
-
-export const runtime = "edge";
